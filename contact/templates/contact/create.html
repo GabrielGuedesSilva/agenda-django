@@ -25,8 +25,11 @@
           <label for="{{ field.id_for_label}}"> {{field.label}} </label>
           {% comment %} O QUE ESTÁ ABAIXO REPRESENTA A CRIAÇÃO DO INPUT {% endcomment %}
           {{ field }}
-
           {{ field.errors }}
+
+          {% if field.help_text %}
+            <p class="help-text"> {{ field.help_text }} </p>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
@@ -46,10 +49,6 @@
           <button class="btn" type="submit">Send</button>
         </div>
       </div>
-      
-
-      
-
     </form>
   </div>
 {% endblock content %}
