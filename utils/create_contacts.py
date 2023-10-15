@@ -8,6 +8,8 @@ import django
 from django.conf import settings
 
 DJANGO_BASE_DIR = Path(__file__).parent.parent
+
+# Número de objetos que vão ser criados
 NUMBER_OF_OBJECTS = 1000
 
 sys.path.append(str(DJANGO_BASE_DIR))
@@ -20,9 +22,6 @@ if __name__ == '__main__':
     import faker
 
     from contact.models import Category, Contact
-
-    Contact.objects.all().delete()
-    Category.objects.all().delete()
 
     fake = faker.Faker('pt_BR')
     categories = ['Amigos', 'Família', 'Conhecidos']

@@ -47,13 +47,13 @@ class ContactForm(forms.ModelForm):
         last_name = cleaned_data.get('last_name')
         
         if first_name == last_name:
-            msg = ValidationError(
+            erro = ValidationError(
                     'Primeiro nome não pode ser igual ao segundo',
                     code='invalid'
                 )
             
-            self.add_error('first_name', msg)
-            self.add_error('last_name', msg)
+            self.add_error('first_name', erro)
+            self.add_error('last_name', erro)
         
         return super().clean()
     
