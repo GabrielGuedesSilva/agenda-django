@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-  <h1> CREATE CONTACT </h1>
+  <h1> {{ name_page }} </h1>
 
   <div class="form-wrapper">
 
@@ -31,6 +31,14 @@
             <p class="help-text"> {{ field.help_text }} </p>
           {% endif %}
         </div>
+
+        {% if field.name == 'picture' and field.value.url %}
+        <div class="form-group">
+            <p>
+              <img src="{{ field.value.url }}">
+            </p>
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
 

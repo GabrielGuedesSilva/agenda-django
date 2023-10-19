@@ -8,11 +8,12 @@ def create (request):
     form_action = reverse('contact:create')
     
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)
     
         context = {
             'form': form,
-            'form_action': form_action
+            'form_action': form_action,
+            'name_page': 'CREATE CONTACT'
         }
         
         if form.is_valid():
@@ -21,18 +22,19 @@ def create (request):
         
         return render (
             request,
-            'contact/create.html',
+            'contact/create-update.html',
             context
         )
     
     context = {
             'form': ContactForm(),
-            'form_action': form_action
+            'form_action': form_action,
+            'name_page': 'CREATE CONTACT'
         }
     
     return render (
             request,
-            'contact/create.html',
+            'contact/create-update.html',
             context
         )
     
@@ -43,11 +45,12 @@ def update (request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id, show=True)
     
     if request.method == 'POST':
-        form = ContactForm(request.POST,instance=contact)
+        form = ContactForm(request.POST, request.FILES, instance=contact)
     
         context = {
             'form': form,
-            'form_action': form_action
+            'form_action': form_action,
+            'name_page': 'UPDATE CONTACT'
         }
         
         if form.is_valid():
@@ -56,18 +59,19 @@ def update (request, contact_id):
         
         return render (
             request,
-            'contact/create.html',
+            'contact/create-update.html',
             context
         )
     
     context = {
             'form': ContactForm(instance=contact),
-            'form_action': form_action
+            'form_action': form_action,
+            'name_page': 'UPDATE CONTACT'
         }
     
     return render (
             request,
-            'contact/create.html',
+            'contact/create-update.html',
             context
         )
     
