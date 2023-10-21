@@ -13,7 +13,7 @@ def create (request):
         context = {
             'form': form,
             'form_action': form_action,
-            'name_page': 'CREATE CONTACT'
+            'contain_image': True
         }
         
         if form.is_valid():
@@ -22,19 +22,19 @@ def create (request):
         
         return render (
             request,
-            'contact/create-update.html',
+            'contact/create.html',
             context
         )
     
     context = {
             'form': ContactForm(),
             'form_action': form_action,
-            'name_page': 'CREATE CONTACT'
+            'contain_image': True
         }
     
     return render (
             request,
-            'contact/create-update.html',
+            'contact/create.html',
             context
         )
     
@@ -50,7 +50,7 @@ def update (request, contact_id):
         context = {
             'form': form,
             'form_action': form_action,
-            'name_page': 'UPDATE CONTACT'
+            'contain_image': True
         }
         
         if form.is_valid():
@@ -59,19 +59,19 @@ def update (request, contact_id):
         
         return render (
             request,
-            'contact/create-update.html',
+            'contact/update.html',
             context
         )
     
     context = {
             'form': ContactForm(instance=contact),
             'form_action': form_action,
-            'name_page': 'UPDATE CONTACT'
+            'contain_image': True
         }
     
     return render (
             request,
-            'contact/create-update.html',
+            'contact/update.html',
             context
         )
     
