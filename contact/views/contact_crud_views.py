@@ -40,7 +40,7 @@ def create (request):
     
 def update (request, contact_id):
     
-    form_action = reverse('contact:update', args=(contact_id,))
+    form_action = reverse('contact:contact_update', args=(contact_id,))
     
     contact = get_object_or_404(Contact, pk=contact_id, show=True)
     
@@ -55,11 +55,11 @@ def update (request, contact_id):
         
         if form.is_valid():
             contact = form.save()
-            return redirect('contact:update', contact_id=contact.id)
+            return redirect('contact:contact_update', contact_id=contact.id)
         
         return render (
             request,
-            'contact/update.html',
+            'contact/contact_update.html',
             context
         )
     
@@ -71,7 +71,7 @@ def update (request, contact_id):
     
     return render (
             request,
-            'contact/update.html',
+            'contact/contact_update.html',
             context
         )
     
